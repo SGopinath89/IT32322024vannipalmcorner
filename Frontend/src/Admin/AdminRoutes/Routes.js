@@ -9,7 +9,7 @@ const AdminUser = lazy(() => import("../AdminPages/AdminUsers"));
 
 // Route configuration
 const MainRoute = [
-    { path: "/adminlogin", element: <AdminLogin /> },
+    { path: "/", element: <AdminLogin /> },
     { path: "/admindashboard", element: <AdminDashBoard /> },
     { path: "/adminproduct", element: <AdminProduct /> },
     { path: "/adminseller", element: <AdminSeller /> },
