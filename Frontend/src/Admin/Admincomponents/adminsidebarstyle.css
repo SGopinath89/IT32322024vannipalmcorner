@@ -1,0 +1,31 @@
+
+  .sidebar {
+    display: flex; /* Make the sidebar items appear horizontally */
+    flex-direction: column; /* Stack the items vertically */
+    width: 20%; /* Set the width of the sidebar */
+    background-color: #41423D; /* Set the background color */
+    padding: 10px; /* Add some padding inside the sidebar */
+    height: 100vh;
+    justify-content:space-evenly;
+    
+    
+  }
+
+  /* Styles for each button within the sidebar */
+  .sidebar button {
+    background-color: #e0e0e0; /* Set the button background color */
+    border: none; /* Remove border from the buttons */
+    color: black; /* Set the button text color */
+    padding: 10px 20px; /* Add padding to the buttons */
+    margin-bottom: 5px; /* Add some margin between buttons */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    width: 90%;
+    border-radius:10px;
+
+  }
+
+  /* Styles for the button on hover */
+  .sidebar button:hover {
+    background-color: #000000; /* Change background color on hover */
+    color: aliceblue;
+  }
