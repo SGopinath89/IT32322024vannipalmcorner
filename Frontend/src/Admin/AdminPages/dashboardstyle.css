@@ -1,0 +1,31 @@
+.main {
+    display: flex;
+    flex-direction: row;
+   /* border: red solid 2px;*/
+  }
+  
+  .nav {
+    /*border: black solid 2px;*/
+    width: 25%;
+  }
+  
+  .section {
+    margin-left: 0; 
+    /*border: red solid 2px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    width: 75%;
+  }
+  
+  .logo {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .content {
+    text-align: center;
+    color: #1D594D;
+  }
+  
