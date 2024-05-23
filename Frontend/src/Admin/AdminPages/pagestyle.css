@@ -1,0 +1,46 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    /* border: red solid 2px; */
+  }
+  
+  .nav {
+    /* border: black solid 2px; */
+    width: 25%;
+  }
+  
+  .section {
+    margin-left:20px;
+    border: red solid 2px;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: 100vh;
+  }
+  
+  .head {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .detail {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .data {
+    flex: 3;
+    border: blue solid 2px;
+    margin-right: 20px; /* Space between data and many */
+    height: 80vh;
+  }
+  
+  .many {
+    flex: 1;
+    border: green solid 2px;
+    height: 80vh;
+  }
+  
