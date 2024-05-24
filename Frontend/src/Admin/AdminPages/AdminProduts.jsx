@@ -15,8 +15,16 @@ const AdminProducts = () => {
           <h1>Products details </h1>
         </div>
         <div className='detail'>
-          <div className='data'></div>
-          <div className='many'></div>
+          <div className='data'>
+            <input type='search'></input>
+            <div className='owndetail'>
+              <img></img>
+              <h3> Name: </h3>
+            </div>
+          </div>
+          <div className='many'>
+
+          </div>
         </div>
       </section>
 
