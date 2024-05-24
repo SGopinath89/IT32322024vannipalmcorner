@@ -1,46 +1,131 @@
+/* AdminProducts.module.css */
 .main {
-    display: flex;
-    flex-direction: row;
-    /* border: red solid 2px; */
-  }
+  display: flex; /* Arrange sidebar and content side-by-side */
+  width: 100vw; /* Take up full viewport width */
+  height: 100vh; /* Take up full viewport height */
+  overflow: hidden; /* Prevent overflow issues */
+}
+
+.nav {
+  width: 20%; /* Set sidebar width */
+  background-color: #343a40; /* Dark gray background */
+  color: #fff; /* White text color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Light shadow for sidebar */
+}
+
+.nav button {
+  width: 100%;
+  padding: 10px 20px;
+  margin: 10px 0;
+  background-color: #495057; /* Slightly lighter gray */
+  border: none;
+  color: #fff;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.nav button:hover {
+  background-color: #6c757d; /* Lighter gray on hover */
+}
+
+.section {
+  width: 80%; /* Set content area width */
+  padding: 20px; /* Add padding for content */
+  display: flex; /* Arrange head and detail sections side-by-side */
+  flex-direction: column; /* Stack head above detail by default */
+  background-color: #f8f9fa; /* Light background for content area */
+ 
+}
+
+.head {
+  text-align: center; /* Center text alignment for heading */
+  margin-bottom: 20px; /* Add bottom margin */
+}
+
+.head h1 {
+  font-size: 2.5em; /* Larger font size for heading */
+  margin: 0; /* Remove default margin */
+  color: #343a40; /* Dark color for heading */
+}
+
+.detail {
+  display: flex; /* Arrange search input and product details horizontally */
+  flex-wrap: wrap; /* Allow content to wrap if needed */
+  flex-grow: 1; /* Grow to fill available space */
   
-  .nav {
-    /* border: black solid 2px; */
-    width: 25%;
-  }
+}
+
+.data {
+  flex: 3; /* Allow more space for data section */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for data section */
+  background-color: #ffffff; /* White background for data section */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
   
-  .section {
-    margin-left:20px;
-    border: red solid 2px;
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-    height: 100vh;
-  }
-  
-  .head {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .detail {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-  }
-  
-  .data {
-    flex: 3;
-    border: blue solid 2px;
-    margin-right: 20px; /* Space between data and many */
-    height: 80vh;
-  }
-  
-  .many {
-    flex: 1;
-    border: green solid 2px;
-    height: 80vh;
-  }
-  
+}
+
+.owndetail {
+  width: 90%;
+  height: 80vh;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #85858F;
+}
+
+.owndetail h3 {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #fff; /* White text color */
+}
+
+.many {
+  flex: 1; /* Allow remaining space in the detail section */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+  background-color: #41423D; /* White background */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
+.many .product-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+  transition: transform 0.3s ease;
+}
+
+.many .product-item:hover {
+  transform: scale(1.05);
+}
+
+.data input[type='search'] {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.data input[type='search']::placeholder {
+  color: #6c757d; /* Placeholder text color */
+}
+
+.data input[type='search']:focus {
+  outline: none;
+  border-color: #007bff; /* Border color on focus */
+}
+
+
