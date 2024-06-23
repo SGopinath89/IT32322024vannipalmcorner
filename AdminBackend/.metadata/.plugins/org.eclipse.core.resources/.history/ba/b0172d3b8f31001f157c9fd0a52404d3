@@ -1,0 +1,72 @@
+package com.example.demo.controller;
+
+import com.example.demo.entity.Seller;
+
+import com.example.demo.service.SellerService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+
+@RestController
+@RequestMapping("/api/sellers")
+public class SellerController {
+
+   
+
+    @Autowired
+    private SellerService sellerService;
+    
+    // Get all sellers
+    @GetMapping
+    public List<Seller> getAllSellers() {
+        return sellerService.getAllSellers();
+    }
+
+    // Get seller by ID
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Seller> getSellerById(@PathVariable("id") String id) {
+//        Optional<Seller> seller = sellerRepository.findById(id);
+//        return seller.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+//    }
+
+    // Create a new seller
+    @PostMapping
+//    public ResponseEntity<Seller> createSeller(@RequestBody Seller seller) {
+//        try {
+//            Seller newSeller = sellerRepository.save(seller);
+//            return ResponseEntity.status(HttpStatus.CREATED).body(newSeller);
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
+//
+//    // Update an existing seller
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Seller> updateSeller(@PathVariable("id") String id, @RequestBody Seller seller) {
+//        Optional<Seller> existingSellerOptional = sellerRepository.findById(id);
+//        if (existingSellerOptional.isPresent()) {
+//            Seller existingSeller = existingSellerOptional.get();
+//            existingSeller.setSellerName(seller.getSellerName());
+//            // You may add more fields to update here if needed
+//
+//            Seller updatedSeller = sellerRepository.save(existingSeller);
+//            return ResponseEntity.ok(updatedSeller);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
+
+    // Delete a seller by ID
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteSeller(@PathVariable("id") String id) {
+//        try {
+//            sellerRepository.deleteById(id);
+//            return ResponseEntity.noContent().build();
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
+}

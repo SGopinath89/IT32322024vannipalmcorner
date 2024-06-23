@@ -1,0 +1,65 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "products")
+public class Product {
+
+    @Id
+   
+    private Long pid;
+
+    @Column(nullable = false, unique = true)
+    private String productName;
+
+    @ManyToOne
+    @JoinColumn(name = "seller_id", nullable = false)
+    private Seller seller;
+
+    @Column(nullable = false)
+    private int quantityAvailable;
+
+    // Constructors, getters, and setters
+
+    public Product() {
+    }
+
+    public Product(String productName, Seller seller, int quantityAvailable) {
+        this.productName = productName;
+        this.seller = seller;
+        this.quantityAvailable = quantityAvailable;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
+    public int getQuantityAvailable() {
+        return quantityAvailable;
+    }
+
+    public void setQuantityAvailable(int quantityAvailable) {
+        this.quantityAvailable = quantityAvailable;
+    }
+}
