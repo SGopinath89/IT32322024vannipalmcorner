@@ -1,33 +1,54 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AdminSidebar from '../Admincomponents/AdminSidebar';
-import './pagestyle.css'; // Ensure you have the appropriate CSS file imported
+import './pagestyle.css';
 
 const API_URL = 'http://localhost:8080/api/users';
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null); // State to keep track of selected user
-  const [searchTerm, setSearchTerm] = useState(''); // State to manage search input
-  const [loading, setLoading] = useState(true); // State to track loading state
-  const [error, setError] = useState(null); // State to track any errors
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     axios.get(API_URL)
       .then(response => {
-        setUsers(response.data);
-        setLoading(false); // Once data is fetched, set loading to false
+        setLoading(false);
+        if (Array.isArray(response.data)) {
+          setUsers(response.data);
+        } else {
+          // Handle single user object
+          setUsers([response.data]); // Wrap in an array
+        }
       })
       .catch(error => {
         console.error('Error fetching users:', error);
-        setLoading(false); // Set loading to false in case of error
-        setError('Error fetching data'); // Set an error message
+        setLoading(false);
+        setError('Error fetching data');
       });
-  }, []); // Empty dependency array means this effect runs once after initial render
+  }, []);
 
+  // useEffect(() => {
+  //   axios.get(API_URL)
+  //     .then(response => {
+  //       if (Array.isArray(response.data)) {
+  //         setUsers(response.data);
+  //       } else {
+  //         console.error('Response data is not an array:', response.data);
+  //         setError('Unexpected data format');
+  //       }
+  //       setLoading(false);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching users:', error);
+  //       setLoading(false);
+  //       setError('Error fetching data');
+  //     });
+  // }, []);
   const handleUserClick = (user) => {
-    setSelectedUser(user); // Set the selected user when a username is clicked
+    setSelectedUser(user);
   };
 
   const handleSearchChange = (e) => {
@@ -35,15 +56,15 @@ const AdminUsers = () => {
     const foundUser = users.find((user) =>
       user.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
-    setSelectedUser(foundUser); // Set the selected user based on search result
+    setSelectedUser(foundUser);
   };
 
   if (loading) {
-    return <p>Loading...</p>; // Display loading message while fetching data
+    return <p>Loading...</p>;
   }
 
   if (error) {
-    return <p>{error}</p>; // Display error message if fetching data fails
+    return <p>{error}</p>;
   }
 
   return (
@@ -70,16 +91,19 @@ const AdminUsers = () => {
                   <h3>Name: {selectedUser.name}</h3>
                   <p>Email: {selectedUser.email}</p>
                   <h4>Ordered Products:</h4>
-                  <ul>
-                    {selectedUser.orders.map((order, index) => (
-                      <li key={index}>
-                      <strong>Product Name:</strong> {order.product.productName}<br />
-                      <strong>Order Date:</strong> {order.orderDate}<br />
-                      <strong>Quantity Ordered:</strong> {order.quantityOrdered}
-                    </li>
-                    ))}
-                  </ul>
-
+                  {selectedUser && selectedUser.orders ? (
+                    <ul>
+                      {selectedUser.orders.map((order, index) => (
+                        <li key={index}>
+                          <strong>Product Name:</strong> {order.product.product_name}<br />
+                          <strong>Order Date:</strong> {order.order_date}<br />
+                          <strong>Quantity Ordered:</strong> {order.quantity_ordered}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No orders available for this user.</p>
+                  )}
                 </>
               ) : (
                 <p>Select a user to see details</p>
@@ -87,16 +111,20 @@ const AdminUsers = () => {
             </div>
           </div>
           <div className='many'>
-            {users.map((user, index) => (
-              <div
-                key={index}
-                className='product-item'
-                onClick={() => handleUserClick(user)}
-                style={{ cursor: 'pointer', padding: '10px', border: '1px solid #ccc', margin: '5px 0' }}
-              >
-                {user.name}
-              </div>
-            ))}
+            {Array.isArray(users) && users.length > 0 ? (
+              users.map((user, index) => (
+                <div
+                  key={index}
+                  className='product-item'
+                  onClick={() => handleUserClick(user)}
+                  style={{ cursor: 'pointer', padding: '10px', border: '1px solid #ccc', margin: '5px 0' }}
+                >
+                  {user.name}
+                </div>
+              ))
+            ) : (
+              <p>No users available</p>
+            )}
           </div>
         </div>
       </section>
