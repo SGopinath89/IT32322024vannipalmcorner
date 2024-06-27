@@ -34,3 +34,11 @@ const users = [
 ];
 
 export default users;
+
+
+// INSERT INTO user (name, email, password, is_admin) VALUES ('Admin User', 'admin@admin.com', 'admin123', true);
+// INSERT INTO user (name, email, password, is_admin) VALUES ('John Doe', 'john@email.com', 'john123', false);
+// INSERT INTO user (name, email, password, is_admin) VALUES ('Alice Smith', 'alice@email.com', 'alice123', false);
+// INSERT INTO user (name, email, password, is_admin) VALUES ('Eva Brown', 'eva@email.com', 'eva123', false);
+// INSERT INTO user (name, email, password, is_admin) VALUES ('David Miller', 'david@email.com', 'david123', false);
+
