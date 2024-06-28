@@ -1,45 +1,3 @@
-//package com.example.demo.controller;
-//
-//import com.example.demo.entity.User;
-//import com.example.demo.service.UserService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.List;
-//
-//@RestController
-//@RequestMapping("/api/users")
-//public class UserController {
-//
-//    @Autowired
-//    private UserService userService;
-//
-//    @GetMapping
-//    public List<User> getAllUsers() {
-//        return userService.getAllUsers();
-//    }
-//
-//    @GetMapping("/{id}")
-//    public User getUserById(@PathVariable Long id) {
-//        return userService.getUserById(id);
-//    }
-//
-//    @PostMapping
-//    public User createUser(@RequestBody User user) {
-//        return userService.saveUser(user);
-//    }
-//
-//    @PutMapping("/{id}")
-//    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-//        user.setId(id);
-//        return userService.saveUser(user);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteUser(@PathVariable Long id) {
-//        userService.deleteUser(id);
-//    }
-//}
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
@@ -47,6 +5,8 @@ import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -58,12 +18,19 @@ public class UserController {
 
     @GetMapping
     public List<User> getAllUsers() {
-        return userService.getAllUsers();
+        List<User> users = userService.getAllUsers();
+        if (users.isEmpty()) {
+            // Handle empty list case (e.g., return a specific response)
+            return Collections.emptyList(); // Return an empty list
+        } else {
+            // Users found, return the list as usual
+            return users;
+        }
     }
 
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+    @GetMapping("/{Uid}")
+    public User getUserById(@PathVariable String Uid) {
+        return userService.getUserById(Uid);
     }
 
     @PostMapping
@@ -71,14 +38,14 @@ public class UserController {
         return userService.saveUser(user);
     }
 
-    @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-        user.setId(id);
+    @PutMapping("/{Uid}")
+    public User updateUser(@PathVariable String Uid, @RequestBody User user) {
+        user.setId(Uid);
         return userService.saveUser(user);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
+    @DeleteMapping("/{Uid}")
+    public void deleteUser(@PathVariable String Uid) {
+        userService.deleteUser(Uid);
     }
 }
