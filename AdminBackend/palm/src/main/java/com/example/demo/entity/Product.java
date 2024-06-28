@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 public class Product {
 
     @Id
-   
     private String pid;
 
     @Column(nullable = false, unique = true)
@@ -25,9 +24,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(String pid,String productName, Seller seller, int quantityAvailable) {
-    	this.pid = pid;
-    	this.productName = productName;
+    public Product(String pid, String productName, Seller seller, int quantityAvailable) {
+        this.pid = pid;
+        this.productName = productName;
         this.seller = seller;
         this.quantityAvailable = quantityAvailable;
     }
